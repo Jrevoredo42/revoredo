@@ -2,9 +2,9 @@ export type PageKey =
   | 'home'
   | 'historia'
   | 'discografia'
-//| 'producao'
-//| 'literatura'
-//| 'projetos'
+  | 'producao'
+  | 'literatura'
+  | 'projetos'
 
 export interface Palette {
   /** page background base */
@@ -31,9 +31,11 @@ export interface PageDef {
   /** route path */
   href: string
   palette: Palette
+  /** hide from navigation and footer while keeping the route/palette defined */
+  hidden?: boolean
 }
 
-export const PAGES: PageDef[] = [
+const ALL_PAGES: PageDef[] = [
   {
     key: 'home',
     label: 'Início',
@@ -79,12 +81,12 @@ export const PAGES: PageDef[] = [
       surface: 'rgba(69,113,135,0.12)',
     },
   },
-  /*
   {
     key: 'producao',
     label: 'Produção',
     index: '04',
     href: '/producao',
+    hidden: true,
     palette: {
       bg: '#0d0100',
       fg: '#f0ddd6',
@@ -100,6 +102,7 @@ export const PAGES: PageDef[] = [
     label: 'Literatura',
     index: '05',
     href: '/literatura',
+    hidden: true,
     palette: {
       bg: '#d9d6cc',
       fg: '#311d24',
@@ -115,6 +118,7 @@ export const PAGES: PageDef[] = [
     label: 'Projetos',
     index: '06',
     href: '/projetos',
+    hidden: true,
     palette: {
       bg: '#20160b',
       fg: '#f2e9dc',
@@ -124,12 +128,13 @@ export const PAGES: PageDef[] = [
       accent2: '#e08317',
       surface: 'rgba(224,131,23,0.09)',
     },
-   
-  }, */
+  },
 ]
 
+export const PAGES: PageDef[] = ALL_PAGES.filter((p) => !p.hidden)
+
 export const PAGE_MAP: Record<PageKey, PageDef> = Object.fromEntries(
-  PAGES.map((p) => [p.key, p]),
+  ALL_PAGES.map((p) => [p.key, p]),
 ) as Record<PageKey, PageDef>
 
 /** Resolve a página (e sua paleta) a partir do pathname. */
