@@ -118,7 +118,6 @@ const ALL_PAGES: PageDef[] = [
     label: 'Projetos',
     index: '06',
     href: '/projetos',
-    hidden: true,
     palette: {
       bg: '#20160b',
       fg: '#f2e9dc',

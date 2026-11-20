@@ -5,7 +5,7 @@ import type { Palette } from '@/lib/pages'
 import { Reveal, Section, withAlpha } from './ui'
 
 // Substitua pelo número real do artista (formato internacional, só dígitos: DDI + DDD + número)
-const WHATSAPP_NUMBER = '5511999999999'
+const WHATSAPP_NUMBER = '5587981033862'
 
 const SERVICOS = [
   'Show / apresentação ao vivo',

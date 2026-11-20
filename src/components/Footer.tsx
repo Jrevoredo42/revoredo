@@ -5,11 +5,17 @@ import { PAGES } from '@/lib/pages'
 import { usePage } from '@/lib/usePage'
 
 export function Footer() {
-  const { palette } = usePage()
+  const { page, palette } = usePage()
+  const isDiscografia = page.key === 'discografia'
   return (
     <footer
-      className="mt-24 border-t px-6 pb-10 pt-16 md:px-12 lg:px-20"
-      style={{ borderColor: palette.line }}
+      className="relative z-10 mt-24 border-t px-6 pb-10 pt-16 md:px-12 lg:px-20"
+      style={{
+        borderColor: palette.line,
+        background: isDiscografia
+          ? 'linear-gradient(180deg, rgba(1,17,21,0.32) 0%, rgba(1,17,21,0.9) 38%, #011115 100%)'
+          : undefined,
+      }}
     >
       <div className="mx-auto w-full max-w-[1280px]">
         <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
