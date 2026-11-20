@@ -28,30 +28,40 @@ const AMBIENT_WORDS = [
 ]
 
 const ROLES = [
-  { t: 'Cantor', d: 'Voz e presença de palco forjadas em duas décadas de estrada.' },
-  { t: 'Compositor', d: 'Autor de um cancioneiro que atravessa MPB, samba e canção de raiz.' },
-  { t: 'Produtor musical', d: 'Assinatura sonora em discos e shows de dezenas de artistas.' },
-  { t: 'Escritor & Poeta', d: 'Livros publicados e saraus que espalham a palavra falada.' },
+  {
+    t: 'Cantor',
+    d: 'Reconhecido por sua potência no palco, venceu o Prêmio da Música de Pernambuco (2022) e o Prêmio Copergás do Festival Janeiro de Grandes Espetáculos (2026) como Melhor Cantor e Melhor Show.',
+  },
+  {
+    t: 'Compositor',
+    d: 'Sua identidade nasce na fusão entre palavra e melodia, carregando a força do Agreste pernambucano — integrante da mostra REVERBO e autor de obras como Revoredo, Agreste e o EP Fino Fio.',
+  },
+  {
+    t: 'Produtor musical',
+    d: 'À frente do selo Studio Tear e do Coletivo Tear, assina a produção fonográfica de artistas como Gabi da Pele Preta e Lili Novais, além da direção musical de espetáculos cênicos e da curadoria de festivais.',
+  },
+  {
+    t: 'Escritor & Poeta',
+    d: 'Autor dos livros infantis Dianimal (CEPE) e O Casaco Oco do Isaac (Vacatussa), explora a ludicidade e a musicalidade das palavras em livros, poesia e encontros literários de formação.',
+  },
 ]
 
 const STATS = [
   { n: '30', l: 'anos de carreira' },
-  { n: '12', l: 'discos & singles' },
-  { n: '400+', l: 'shows realizados' },
-  { n: '05', l: 'livros publicados' },
+  { n: '03', l: "Discos e EP's Lançados" },
+  { n: '+500', l: 'shows realizados' },
+  { n: '03', l: 'livros publicados' },
 ]
 
 const SHOWS = [
-  { date: '18 OUT', city: 'São Paulo · SP', venue: 'Sesc Pompeia', tag: 'Turnê Raiz Viva' },
-  { date: '02 NOV', city: 'Rio de Janeiro · RJ', venue: 'Teatro Rival', tag: 'Voz & Violão' },
-  { date: '23 NOV', city: 'Belo Horizonte · MG', venue: 'Palácio das Artes', tag: 'Turnê Raiz Viva' },
-  { date: '14 DEZ', city: 'Recife · PE', venue: 'Teatro do Parque', tag: 'Sarau Cantado' },
+  { date: '22 NOV', evento: 'Lançamento do Livro Dianimal', venue: 'Bibliosesc Arcoverde', tag: 'Literatura' },
+  { date: '20 NOV', evento: 'Luanda Ruanda Histórias Africanas', venue: 'Centro Cultural Sesc Garanhuns', tag: 'Contação de histórias' },
 ]
 
 const RELEASES = [
-  { title: 'Raiz Viva', year: '2025', kind: 'Álbum', color: '#e06382' },
-  { title: 'Palavra Rasa', year: '2024', kind: 'Single', color: '#2fa59b' },
-  { title: 'Do Avesso', year: '2023', kind: 'EP', color: '#d85177' },
+  { title: 'Fino Fio', year: '2026', kind: 'EP', color: '#e06382', photo: '/albuns/fino-fio.png' },
+  { title: 'Agreste', year: '2024', kind: 'Single', color: '#744325', photo: '/albuns/agreste.png' },
+  { title: 'Trilogia Trancada', year: '2021', kind: 'EP', color: '#01031f', photo: '/albuns/trilogia-trancada.png' },
 ]
 
 export default function HomePage() {
@@ -104,6 +114,7 @@ export default function HomePage() {
         // Count-up statistics. The element keeps its literal fallback text, so
         // if the trigger never fires the number is still shown — never blank.
         gsap.utils.toArray<HTMLElement>('.stat-num').forEach((el) => {
+          const prefix = el.dataset.prefix || ''
           const target = Number(el.dataset.target || '0')
           const suffix = el.dataset.suffix || ''
           const pad = el.dataset.pad === '1'
@@ -115,7 +126,7 @@ export default function HomePage() {
             scrollTrigger: { trigger: el, start: 'top 90%', once: true },
             onUpdate: () => {
               const n = Math.round(obj.v)
-              el.textContent = (pad ? String(n).padStart(2, '0') : String(n)) + suffix
+              el.textContent = prefix + (pad ? String(n).padStart(2, '0') : String(n)) + suffix
             },
           })
         })
@@ -234,7 +245,7 @@ export default function HomePage() {
               className="max-w-[34ch] text-[15px] leading-relaxed sm:text-base"
               style={{ color: p.muted }}
             >
-              Cantor, compositor, produtor musical, escritor e poeta.{' '}
+              Músico, compositor, poeta, arte-educador, produtor musical e produtor cultural.{' '}
               <span style={{ color: p.fg }}>Trinta anos de canção e palavra.</span>
             </p>
 
@@ -301,7 +312,7 @@ export default function HomePage() {
                 className="mt-7 max-w-sm text-base leading-relaxed"
                 style={{ color: p.muted, animation: 'pageIn 0.8s 0.7s both' }}
               >
-                Cantor, compositor, produtor musical, escritor e poeta.
+                Músico, compositor, poeta, arte-educador, produtor musical e produtor cultural.
                 <span style={{ color: p.fg }}> Trinta anos de canção e palavra.</span>
               </p>
 
@@ -354,15 +365,18 @@ export default function HomePage() {
           <Reveal delay={120}>
             <div className="space-y-6 text-lg leading-relaxed" style={{ color: p.muted }}>
               <p>
-                Revoredo é uma dessas figuras raras em que o artista e a obra se
-                confundem. Em três décadas de estrada, transitou entre o palco e a
-                página, entre o estúdio e a roda de rua, sem nunca abrir mão de uma
-                assinatura: a de quem faz da arte um gesto coletivo.
+                Músico, compositor, poeta, escritor, produtor musical e
+                arte-educador de Garanhuns, no Agreste pernambucano. Em 30 anos
+                de trajetória, sua obra transita entre a música, a literatura,
+                as artes cênicas e a formação artística, consolidando-se como um
+                dos principais expoentes da cena contemporânea de Pernambuco.
               </p>
               <p style={{ color: p.fg }}>
-                Cantor de voz grave e afetuosa, compositor de canção brasileira,
-                produtor musical requisitado, escritor e poeta — cada faceta
-                alimenta a outra, formando um único corpo de trabalho.
+                Integrante da mostra coletiva REVERBO, fundador do Coletivo Tear
+                e gestor do Espaço Cultural Aldeia Tear e do selo Studio Tear,
+                Revoredo constrói sua identidade na fusão entre palavra e
+                melodia — música que nasce do chão agrestino e poesia que pulsa
+                no compasso do tempo.
               </p>
               <Link
                 href="/historia"
@@ -382,14 +396,17 @@ export default function HomePage() {
         <Reveal>
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl lg:grid-cols-4" style={{ background: p.line }}>
             {STATS.map((s) => {
-              const suffix = s.n.replace(/[0-9]/g, '')
-              const target = s.n.replace(/[^0-9]/g, '')
+              const match = s.n.match(/^([^0-9]*)([0-9]+)(.*)$/)
+              const prefix = match?.[1] ?? ''
+              const target = match?.[2] ?? '0'
+              const suffix = match?.[3] ?? ''
               const pad = target.length > 1 && target.startsWith('0')
               return (
                 <div key={s.l} className="p-8 md:p-10" style={{ background: p.bg }}>
                   <div
                     className="stat-num font-display text-6xl md:text-7xl"
                     style={{ color: p.accent }}
+                    data-prefix={prefix}
                     data-target={Number(target)}
                     data-suffix={suffix}
                     data-pad={pad ? '1' : '0'}
@@ -442,12 +459,6 @@ export default function HomePage() {
             <Kicker p={p}>Em circulação</Kicker>
             <h2 className="mt-6 font-serif text-4xl md:text-5xl">Shows &amp; agenda</h2>
           </Reveal>
-          <Reveal delay={100}>
-            <p className="max-w-xs text-sm" style={{ color: p.muted }}>
-              A turnê <em>Raiz Viva</em> percorre o país reunindo canção, palavra e
-              improviso em cada cidade.
-            </p>
-          </Reveal>
         </div>
 
         <div className="mt-12 flex flex-col">
@@ -461,7 +472,7 @@ export default function HomePage() {
                   {s.date}
                 </span>
                 <div>
-                  <div className="text-lg font-medium md:text-xl">{s.city}</div>
+                  <div className="text-lg font-medium md:text-xl">{s.evento}</div>
                   <div className="text-sm" style={{ color: p.muted }}>
                     {s.venue} · {s.tag}
                   </div>
@@ -481,25 +492,46 @@ export default function HomePage() {
 
       {/* ===================== LANÇAMENTOS ===================== */}
       <Section className="py-24 md:py-32">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[1.35fr_0.65fr] lg:items-center lg:gap-14">
           <Reveal>
-            <div className="release-grid grid grid-cols-1 gap-5 sm:grid-cols-3">
+            <div className="release-grid grid grid-cols-1 gap-6 sm:grid-cols-3">
               {RELEASES.map((r, i) => (
-                <div
+                <article
                   key={r.title}
-                  className="release-card group flex aspect-square flex-col justify-between rounded-xl p-5 transition-transform hover:-translate-y-1.5"
+                  className="release-card group grid grid-rows-[auto_1fr] overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1.5"
                   style={{
-                    background: `linear-gradient(150deg, ${withAlpha(r.color, 0.9)}, ${withAlpha(r.color, 0.35)})`,
-                    color: '#1a1310',
+                    backgroundColor: p.bg,
+                    borderColor: withAlpha(p.fg, 0.16),
+                    boxShadow: `0 18px 40px -22px ${withAlpha(r.color, 0.75)}`,
                     animationDelay: `${i * 80}ms`,
                   }}
                 >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.2em]">{r.kind}</span>
-                  <div>
-                    <div className="font-serif text-xl leading-tight">{r.title}</div>
-                    <div className="text-sm opacity-70">{r.year}</div>
-                  </div>
-                </div>
+                  <img
+                    src={r.photo}
+                    alt={`Capa de ${r.title} (${r.kind}, ${r.year})`}
+                    className="aspect-square w-full object-cover object-center transition-all duration-500 group-hover:brightness-[1.06]"
+                    style={{ backgroundColor: r.color }}
+                    loading="lazy"
+                  />
+                  <header
+                    className="flex flex-col justify-between px-4 py-3.5"
+                    style={{
+                      background: `linear-gradient(180deg, ${withAlpha(r.color, 0.34)} 0%, ${withAlpha('#16050c', 0.68)} 100%)`,
+                      borderTop: `1px solid ${withAlpha(p.fg, 0.12)}`,
+                    }}
+                  >
+                    <div className="flex items-center justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.2em]">
+                      <span style={{ color: withAlpha(p.fg, 0.72) }}>{r.kind}</span>
+                      <span style={{ color: withAlpha(p.fg, 0.58) }}>{r.year}</span>
+                    </div>
+                    <h3
+                      className="mt-1.5 font-serif text-lg leading-snug sm:text-xl"
+                      style={{ color: p.fg }}
+                    >
+                      {r.title}
+                    </h3>
+                  </header>
+                </article>
               ))}
             </div>
           </Reveal>
@@ -511,9 +543,10 @@ export default function HomePage() {
               do estúdio
             </h2>
             <p className="mt-6 text-lg leading-relaxed" style={{ color: p.muted }}>
-              O disco <em>Raiz Viva</em> inaugura uma nova fase — canções gravadas
-              ao vivo, sem retoques, com a banda em círculo. Ouça os singles e
-              explore a discografia completa.
+              O EP <em>Fino Fio</em> (2026) — novela musical que se soma ao single{' '}
+              <em>Agreste</em> e à <em>Trilogia Trancada</em> — reafirma a sonoridade
+              autoral de Revoredo na cena contemporânea pernambucana. Explore a
+              discografia completa.
             </p>
             <Link
               href="/discografia"
