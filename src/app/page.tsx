@@ -10,7 +10,7 @@ import { ContactSection } from '@/components/ContactSection'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const FOTO_HERO = '/assets/foto-hero.webp'
+const FOTO_HERO = '/revoredo-hero.png'
 const LIVE_1 = '/assets/live-1.png'
 
 function scrollToContato() {
