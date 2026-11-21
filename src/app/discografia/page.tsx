@@ -360,13 +360,13 @@ export default function DiscografiaPage() {
         <Section className="pb-8">
           <Reveal>
             <div className="flex flex-wrap items-center justify-between gap-6 rounded-3xl border px-8 py-10" style={{ borderColor: p.line }}>
-              <h2 className="font-serif text-3xl md:text-4xl">Por trás de cada disco, uma produção.</h2>
+              <h2 className="font-serif text-3xl md:text-4xl">Além de cada Disco, um Projeto.</h2>
               <Link
-                href="/producao"
+                href="/projetos"
                 className="group inline-flex items-center gap-3 rounded-full px-6 py-3 text-sm font-medium uppercase tracking-[0.14em]"
                 style={{ background: p.accent, color: p.bg }}
               >
-                Ver produção musical
+                Ver Projetos
                 <span className="transition-transform group-hover:translate-x-1.5">→</span>
               </Link>
             </div>

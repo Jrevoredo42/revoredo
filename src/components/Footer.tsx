@@ -4,6 +4,16 @@ import Link from 'next/link'
 import { PAGES } from '@/lib/pages'
 import { usePage } from '@/lib/usePage'
 
+const CONTACT_LINKS = [
+  { label: 'Instagram', href: 'https://www.instagram.com/revoredo/' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@Revoredomusicaepoesia' },
+  {
+    label: 'Spotify',
+    href: 'https://open.spotify.com/intl-pt/artist/1nhJndkg9Rvy8ZvN2ndnIj?si=MSVwQ0c6TWG1Aw99wjOw5Q',
+  },
+  { label: 'abrevoredo@gmail.com', href: 'mailto:abrevoredo@gmail.com' },
+]
+
 export function Footer() {
   const { page, palette } = usePage()
   const isDiscografia = page.key === 'discografia'
@@ -62,10 +72,15 @@ export function Footer() {
                 Contato
               </p>
               <ul className="space-y-2.5 text-sm" style={{ color: palette.muted }}>
-                {['Instagram', 'YouTube', 'Spotify', 'contato@revoredo.art'].map((x) => (
-                  <li key={x}>
-                    <a href="#" className="transition-colors hover:opacity-70">
-                      {x}
+                {CONTACT_LINKS.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="transition-colors hover:opacity-70"
+                    >
+                      {item.label}
                     </a>
                   </li>
                 ))}

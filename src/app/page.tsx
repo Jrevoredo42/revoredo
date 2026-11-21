@@ -285,12 +285,7 @@ export default function HomePage() {
               style={{ background: `linear-gradient(180deg, transparent, ${withAlpha(p.fg, 0.4)}, transparent)` }}
             />
             <div className="max-w-md lg:max-w-lg">
-              <span
-                className="mb-4 block font-mono text-[11px] uppercase tracking-[0.4em]"
-                style={{ color: p.accent, animation: 'pageIn 0.7s 0.1s both' }}
-              >
-                Est. 1995
-              </span>
+
               <div
                 className="font-display leading-[0.8] tracking-[0.02em]"
                 style={{ color: p.fg, fontSize: 'clamp(3.8rem, 10vw, 11rem)' }}

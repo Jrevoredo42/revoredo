@@ -100,12 +100,7 @@ export default function HistoriaPage() {
                     className="w-full object-cover"
                   />
                 </div>
-                <div
-                  className="absolute -bottom-5 -left-5 rounded-xl px-5 py-4 font-mono text-xs uppercase tracking-[0.2em]"
-                  style={{ background: p.accent, color: p.bg }}
-                >
-                  Desde 1995
-                </div>
+
               </div>
             </Reveal>
           </div>
@@ -124,7 +119,7 @@ export default function HistoriaPage() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <div className="space-y-6 text-lg leading-relaxed" style={{ color: p.muted }}>
+            <div className="space-y-6 text-lg leading-relaxed" style={{ color: p.fg }}>
               <p>
                 Músico, compositor, poeta, escritor, produtor musical e arte-educador de Garanhuns, no Agreste pernambucano. Com 30 anos de trajetória dedicados à música, à literatura, às artes cênicas e à formação artística, consolidou-se como um dos principais expoentes da cena contemporânea de Pernambuco. Sua obra nasce do encontro entre palavra e melodia, tradição e contemporaneidade, traduzindo a força cultural de seu território em experiências poéticas e sonoras.
               </p>
@@ -157,9 +152,8 @@ export default function HistoriaPage() {
             {TIMELINE.map((t, i) => (
               <Reveal key={`${t.year}-${t.title}`} delay={i * 60}>
                 <div
-                  className={`relative grid grid-cols-[auto_1fr] gap-6 md:grid-cols-2 md:gap-12 ${
-                    i % 2 ? 'md:[&>*:first-child]:order-2' : ''
-                  }`}
+                  className={`relative grid grid-cols-[auto_1fr] gap-6 md:grid-cols-2 md:gap-12 ${i % 2 ? 'md:[&>*:first-child]:order-2' : ''
+                    }`}
                 >
                   <span
                     className="absolute left-0 top-1.5 z-10 h-4 w-4 -translate-x-[4px] rounded-full md:left-1/2 md:-translate-x-1/2"
